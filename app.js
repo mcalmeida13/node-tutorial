@@ -1,10 +1,34 @@
 /*
 
+Class 4
+"""
+Working with file system module
+"""
+*/
+
+const fs = require('fs');
+
+// Create a file
+
+// 1st argument: name of the file
+// 2nd argument: what is written on the file
+// 3rd arugment: callback function in case of any error on the application
+fs.writeFile('example.txt',"this is an example", (err) => {
+    if (err){
+        console.log("Error", err);
+    } else {
+        console.log("Sucess on creating the file");
+    }
+})
+
+/*
+
 Class 3
 """
 ReadLine Module
 """
 */
+/*
 const readline = require('readline');
 const rl = readline.createInterface({input: process.stdin,
                           output: process.stdout});
@@ -34,6 +58,7 @@ const inputFunction = function(userInput,answer) {
 rl.on('close', () =>{
     console.log("Correct!!");
 });
+ */
 /*
 
 Class 2
