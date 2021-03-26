@@ -1,3 +1,11 @@
+/*
+
+Class 2
+"""
+Event class
+"""
+*/
+/*
 const EventEmitter = require('events');
 const eventEmitter = new EventEmitter();
 
@@ -20,9 +28,19 @@ class Person extends EventEmitter{
 }
 
 let pedro = new Person('Pedro');
+let manuela = new Person('Manuela');
 pedro.on('name', ()=>{
     console.log('my name is' + pedro.name);
-})
+});
+
+manuela.on('name', ()=>{
+    console.log('my name is ' + manuela.name);
+});
+
+pedro.emit("name");
+manuela.emit("name");
+ */
+
 /*
 """
 Primeiro video
