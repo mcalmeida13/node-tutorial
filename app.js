@@ -6,21 +6,41 @@ Working with file system module
 """
 */
 
-const fs = require('fs');
+
 
 // Create a file
 
 // 1st argument: name of the file
 // 2nd argument: what is written on the file
 // 3rd arugment: callback function in case of any error on the application
-fs.writeFile('example.txt',"this is an example", (err) => {
-    if (err){
-        console.log("Error", err);
-    } else {
-        console.log("Sucess on creating the file");
-    }
-})
 
+// const fs = require('fs');
+
+// //Callback way
+// fs.writeFile('example.txt',"this is an example", (err) => {
+//     if (err){
+//         console.log("Error on creating", err);
+//     } else {
+//         console.log("Sucess on creating the file");
+//         fs.readFile('example.txt','utf8',(err,file) =>{
+//             if(err){
+//                 console.log("Error on reading", err);
+//             } else {
+//                 console.log(file);
+//             }
+//         })
+//     }
+// })
+
+//Promise way
+import * as fs from 'fs/promises';
+import { writeFile } from 'fs/promises';
+
+try{
+    await fs.writeFile('example_await.txt',"this is an example")
+} catch(error) {
+    console.log("Error on creating", err);
+}
 /*
 
 Class 3
