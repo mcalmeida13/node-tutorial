@@ -14,9 +14,10 @@ Working with file system module
 // 2nd argument: what is written on the file
 // 3rd arugment: callback function in case of any error on the application
 
+
 // const fs = require('fs');
 
-// //Callback way
+// //Callback way - creating a file
 // fs.writeFile('example.txt',"this is an example", (err) => {
 //     if (err){
 //         console.log("Error on creating", err);
@@ -32,15 +33,49 @@ Working with file system module
 //     }
 // })
 
-//Promise way
+// //Copying example
+// import {copyFileSync, constants} from 'fs';
+
+// copyFileSync('example.txt','example_copy.txt');
+// console.log("example.txt was copied to example_copy.txt");
+
+//Callback way - renaming a file
+// import * as fs from 'fs/promises';
+// import { rename } from 'fs/promises';
+// fs.rename('example.txt','example_renamed2.txt', (err) => {
+//     if (err){
+//         console.log("Error on renaming", err);
+//     } else {
+//         console.log("Sucess on renaming the file");
+//         fs.readFile('example.txt','utf8',(err,file) =>{
+//             if(err){
+//                 console.log("Error on reading", err);
+//             } else {
+//                 console.log(file);
+//             }
+//         })
+//     }
+// })
+// Promise way - renaming a file
 import * as fs from 'fs/promises';
-import { writeFile } from 'fs/promises';
+import { rename } from 'fs/promises';
 
 try{
-    await fs.writeFile('example_await.txt',"this is an example")
+    await fs.rename('example.txt','example_renamed_asyn.txt')
 } catch(error) {
-    console.log("Error on creating", err);
+    console.log("Error on rename", err);
 }
+
+
+//Promise way -creating a file
+// import * as fs from 'fs/promises';
+// import { writeFile } from 'fs/promises';
+
+// try{
+//     await fs.writeFile('example.txt',"this is an example")
+// } catch(error) {
+//     console.log("Error on creating", err);
+// }
 /*
 
 Class 3
