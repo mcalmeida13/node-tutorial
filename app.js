@@ -56,18 +56,18 @@ Working with file system module
 //         })
 //     }
 // })
-// Promise way - renaming a file
-import * as fs from 'fs/promises';
-import { rename } from 'fs/promises';
+//// Promise way - renaming a file
+// import * as fs from 'fs/promises';
+// import { rename } from 'fs/promises';
 
-try{
-    await fs.rename('example.txt','example_renamed_asyn.txt')
-} catch(error) {
-    console.log("Error on rename", err);
-}
+// try{
+//     await fs.rename('example.txt','example_renamed_asyn.txt')
+// } catch(error) {
+//     console.log("Error on rename", err);
+// }
 
 
-//Promise way -creating a file
+// //Promise way -creating a file
 // import * as fs from 'fs/promises';
 // import { writeFile } from 'fs/promises';
 
@@ -76,6 +76,17 @@ try{
 // } catch(error) {
 //     console.log("Error on creating", err);
 // }
+
+// //Promise way - appending data into a file
+import * as fs from 'fs/promises';
+import { appendFile } from 'fs/promises';
+
+try{
+    await fs.writeFile('example_renamed_asyn.txt',"will this overwrite the existing data?")
+} catch(error) {
+    console.log("Error on creating", err);
+}
+
 /*
 
 Class 3
