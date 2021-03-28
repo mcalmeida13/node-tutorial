@@ -1,1 +1,1 @@
-will this overwrite the existing data?
+will this overwrite the existing data?It was wrong. I wrote writeFile instead of appendFile

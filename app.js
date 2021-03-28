@@ -82,9 +82,9 @@ import * as fs from 'fs/promises';
 import { appendFile } from 'fs/promises';
 
 try{
-    await fs.writeFile('example_renamed_asyn.txt',"will this overwrite the existing data?")
+    await fs.appendFile('example_renamed_asyn.txt',"It was wrong. I wrote writeFile instead of appendFile");
 } catch(error) {
-    console.log("Error on creating", err);
+    console.log("Error on appending data", err);
 }
 
 /*
