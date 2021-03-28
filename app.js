@@ -88,10 +88,24 @@ import { appendFile } from 'fs/promises';
 //     console.log('Error on creating a file', error);
 // }
 
-// Deleting a folder
+// // Deleting a folder
+// try {
+//     await fs.rmdir('New Folder');
+//     console.log("Sucess on deleting the New Folder");
+// } catch (error) {
+//     console.log('Error on creating a file', error);
+// }
+
+// Create a folder with a file
 try {
-    await fs.rmdir('New Folder');
-    console.log("Sucess on deleting the New Folder")
+    await fs.mkdir('tutorial');
+    console.log("Sucess on creating tutorial folder");
+    try{
+        await fs.writeFile('tutorial/example.txt',"this is an example inside a folder");
+        console.log("Sucess on creating example inside tutorial");
+    } catch(error) {
+        console.log("Error on creating", err);
+    }
 } catch (error) {
     console.log('Error on creating a file', error);
 }
