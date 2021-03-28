@@ -81,11 +81,25 @@ Working with file system module
 import * as fs from 'fs/promises';
 import { appendFile } from 'fs/promises';
 
-try{
-    await fs.appendFile('example_renamed_asyn.txt',"It was wrong. I wrote writeFile instead of appendFile");
-} catch(error) {
-    console.log("Error on appending data", err);
+// // Creating a folder
+// try {
+//     await fs.mkdir('New Folder');
+// } catch (error) {
+//     console.log('Error on creating a file', error);
+// }
+
+// Deleting a folder
+try {
+    await fs.rmdir('New Folder');
+    console.log("Sucess on deleting the New Folder")
+} catch (error) {
+    console.log('Error on creating a file', error);
 }
+// try{
+//     await fs.appendFile('example_renamed_asyn.txt',"It was wrong. I wrote writeFile instead of appendFile");
+// } catch(error) {
+//     console.log("Error on appending data", err);
+// }
 
 /*
 
