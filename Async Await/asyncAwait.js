@@ -8,43 +8,6 @@
 // 		};
 
 
-// async function process01() {
-//   console.log("Process 01 started");
-//   console.time("Process 01 ended");
-//   await wait(5000);
-//   console.timeEnd("Process 01 ended");
-//   console.log();
-//   return "process01-value";
-// }
-
-// async function process02() {
-//   console.log("Process 02 started");
-//   console.time("Process 02 ended");
-//   await wait(3000);
-//   console.timeEnd("Process 02 ended");
-//   console.log();
-//   return "process02-value";
-// }
-
-// async function main () {
-//   try {
-//     console.time("Total running time");
-//     const value01 = await process01();
-//     const value02 = await process02();
-    
-//     console.log("Process 01 returned: ", value01);
-//     console.log("Process 02 returned: ", value02);
-    
-//     console.log();
-    
-//     console.timeEnd("Total Running Time");
-//   } catch(error) {
-//     console.log("error", error)
-//   }
-// }
-
-// main();
-
 // function wait(ms) {
 // 			return new Promise(function(resolve) {
 // 				console.log(this);

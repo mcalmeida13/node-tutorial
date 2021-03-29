@@ -6,32 +6,8 @@ Working with file system module
 """
 */
 
+import * as fs from 'fs/promises';
 
-
-// Create a file
-
-// 1st argument: name of the file
-// 2nd argument: what is written on the file
-// 3rd arugment: callback function in case of any error on the application
-
-
-// const fs = require('fs');
-
-// //Callback way - creating a file
-// fs.writeFile('example.txt',"this is an example", (err) => {
-//     if (err){
-//         console.log("Error on creating", err);
-//     } else {
-//         console.log("Sucess on creating the file");
-//         fs.readFile('example.txt','utf8',(err,file) =>{
-//             if(err){
-//                 console.log("Error on reading", err);
-//             } else {
-//                 console.log(file);
-//             }
-//         })
-//     }
-// })
 
 // //Copying example
 // import {copyFileSync, constants} from 'fs';
@@ -39,26 +15,6 @@ Working with file system module
 // copyFileSync('example.txt','example_copy.txt');
 // console.log("example.txt was copied to example_copy.txt");
 
-//Callback way - renaming a file
-// import * as fs from 'fs/promises';
-// import { rename } from 'fs/promises';
-// fs.rename('example.txt','example_renamed2.txt', (err) => {
-//     if (err){
-//         console.log("Error on renaming", err);
-//     } else {
-//         console.log("Sucess on renaming the file");
-//         fs.readFile('example.txt','utf8',(err,file) =>{
-//             if(err){
-//                 console.log("Error on reading", err);
-//             } else {
-//                 console.log(file);
-//             }
-//         })
-//     }
-// })
-//// Promise way - renaming a file
-// import * as fs from 'fs/promises';
-// import { rename } from 'fs/promises';
 
 async function renameFile(file,name,extension) {
     try{
@@ -71,36 +27,7 @@ async function renameFile(file,name,extension) {
 
 
 
-// //Promise way -creating a file
-// import * as fs from 'fs/promises';
-// import { writeFile } from 'fs/promises';
 
-// try{
-//     await fs.writeFile('example.txt',"this is an example")
-// } catch(error) {
-//     console.log("Error on creating", err);
-// }
-
-// //Promise way - appending data into a file
-import * as fs from 'fs/promises';
-import { appendFile } from 'fs/promises';
-
-// // Creating a folder
-// try {
-//     await fs.mkdir('New Folder');
-// } catch (error) {
-//     console.log('Error on creating a file', error);
-// }
-
-// // Deleting a folder
-// try {
-//     await fs.rmdir('New Folder');
-//     console.log("Sucess on deleting the New Folder");
-// } catch (error) {
-//     console.log('Error on creating a file', error);
-// }
-
-// Reading the directory
 
 // deleteFolderWithFiles('tutorial');
 
