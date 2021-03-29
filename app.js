@@ -16,23 +16,24 @@ import * as fs from 'fs/promises';
 // console.log("example.txt was copied to example_copy.txt");
 
 
-async function renameFile(file,name,extension) {
-    try{
-        await fs.rename(file,`${name}.${extension}`);
-        console.log(`Success on renaming ${file} to ${name}.${extension}`);
+deleteFolderWithFiles('tutorial');
+
+// createMultipleFiles();
+
+async function createMultipleFiles () {
+    try {
+        
+
+      await Promise.all([createFile('tutorial','a','txt'),createFile('tutorial','b','txt')]);
+      
+      console.log("Success on creating files");
+      
     } catch(error) {
-        console.log("Error on renamaing", err);
+      console.log("error", error)
     }
 }
 
 
-
-
-
-// deleteFolderWithFiles('tutorial');
-
-// createDirectory('Async Await');
- createFile('asyncAwait', 'js');
 
 async function deleteFolderWithFiles(folder){
     try {
@@ -45,14 +46,25 @@ async function deleteFolderWithFiles(folder){
     }
 }
 
+async function renameFile(file,name,extension) {
+    try{
+        await fs.rename(file,`${name}.${extension}`);
+        console.log(`Success on renaming ${file} to ${name}.${extension}`);
+    } catch(error) {
+        console.log("Error on renamaing", err);
+    }
+}
+
+
 async function deleteFilesWithinFolder(folder) {
     try {
         const files = await readDirectory(folder);
 
         for (let file of files) {
-            await deleteFile(file);
+            await deleteFile(`${folder}/${file}`);
+            console.log(`Deleted ${file}`)
         }
-        
+        console.log(`Sucess on deleting files from ${folder}`);
     } catch (error) {
         console.log('Error on reading folder with files', error);
     }
@@ -96,9 +108,9 @@ async function createDirectory(name) {
 }
 
 
-async function createFile(name,extension) {
+async function createFile(folder,name,extension) {
     try{
-        await fs.writeFile(`Async Await/${name}.${extension}`,'');
+        await fs.writeFile(`${folder}/${name}.${extension}`,'');
         console.log(`Sucess on creating ${name}.${extension} file`);
     } catch(error) {
         console.log("Error on creating", err);
