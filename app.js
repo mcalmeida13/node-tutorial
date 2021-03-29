@@ -60,11 +60,15 @@ Working with file system module
 // import * as fs from 'fs/promises';
 // import { rename } from 'fs/promises';
 
-// try{
-//     await fs.rename('example.txt','example_renamed_asyn.txt')
-// } catch(error) {
-//     console.log("Error on rename", err);
-// }
+async function renameFile(file,name,extension) {
+    try{
+        await fs.rename(file,`${name}.${extension}`);
+        console.log(`Success on renaming ${file} to ${name}.${extension}`);
+    } catch(error) {
+        console.log("Error on renamaing", err);
+    }
+}
+
 
 
 // //Promise way -creating a file
@@ -96,19 +100,111 @@ import { appendFile } from 'fs/promises';
 //     console.log('Error on creating a file', error);
 // }
 
-// Create a folder with a file
-try {
-    await fs.mkdir('tutorial');
-    console.log("Sucess on creating tutorial folder");
+// Reading the directory
+
+// deleteFolderWithFiles('tutorial');
+
+// createDirectory('Async Await');
+ createFile('asyncAwait', 'js');
+
+async function deleteFolderWithFiles(folder){
+    try {
+        await deleteFilesWithinFolder(folder);
+        await deleteFolder(folder);
+        console.log(`Sucess on deleting ${folder}`)
+
+    } catch (error) {
+        console.log(`Error on deleting files in the ${folder}`, error);
+    }
+}
+
+async function deleteFilesWithinFolder(folder) {
+    try {
+        const files = await readDirectory(folder);
+
+        for (let file of files) {
+            await deleteFile(file);
+        }
+        
+    } catch (error) {
+        console.log('Error on reading folder with files', error);
+    }
+
+}
+async function readDirectory(folder) {
+    try {
+        const files = await fs.readdir(folder);
+        // console.log(files);
+        return files;
+    } catch (error) {
+        console.log('Error on reading a folder', error);
+    }
+}
+
+async function deleteFile(file) {
+    try {
+        await fs.unlink(file);
+        console.log("Sucesson on deleting the file");
+    } catch (error) {
+        console.log('Error on deleting a file', error);
+    }
+}
+
+async function deleteFolder(folder) {
+    try {
+        await fs.rmdir(folder);
+        console.log("Sucesson on deleting the folder");
+    } catch (error) {
+        console.log('Error on deleting a folder', error);
+    }
+}
+
+async function createDirectory(name) {
+    try {
+        await fs.mkdir(name);
+        console.log(`Sucess on creating ${name} folder`);
+    } catch (error) {
+        console.log('Error on creating a folder', error);
+    }
+}
+
+
+async function createFile(name,extension) {
     try{
-        await fs.writeFile('tutorial/example.txt',"this is an example inside a folder");
-        console.log("Sucess on creating example inside tutorial");
+        await fs.writeFile(`Async Await/${name}.${extension}`,'');
+        console.log(`Sucess on creating ${name}.${extension} file`);
     } catch(error) {
         console.log("Error on creating", err);
     }
-} catch (error) {
-    console.log('Error on creating a file', error);
 }
+// // Create a folder with a file
+// try {
+//     await fs.mkdir('tutorial');
+//     console.log("Sucess on creating tutorial folder");
+//     try{
+//         await fs.writeFile('tutorial/a.txt',"this is an example inside a folder 1");
+//         await fs.writeFile('tutorial/b.txt',"this is an example inside a folder 2");
+//         console.log("Sucess on creating example inside tutorial");
+//     } catch(error) {
+//         console.log("Error on creating", err);
+//     }
+// } catch (error) {
+//     console.log('Error on creating a file', error);
+// }
+
+// // Trying to remove a folder with a file insed (gives an error)
+// try {
+//     await fs.unlink('tutorial/example.txt')
+//     console.log("Sucess on deleting tutorial/example.txt");
+//     try {
+//         await fs.rmdir('tutorial');
+//         console.log("Sucess on deleting tutorial folder");
+//     } catch {
+//         console.log("Error on deleting tutorial", error);
+//     }
+// } catch (error) {
+//     console.log("Error on deleting tutorial", error);
+// }
 // try{
 //     await fs.appendFile('example_renamed_asyn.txt',"It was wrong. I wrote writeFile instead of appendFile");
 // } catch(error) {
