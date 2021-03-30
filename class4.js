@@ -1,39 +1,27 @@
 /*
 
-Class 5
-"""
-Working with Readable and Writable streams
-"""
-*/
-
-const fs = require('fs');
-
-const readStream  = fs.createReadStream('.example_copy.txt');
-readStream.on('data', (chunk) =>{
-    console.log(chunk)
-})
-
-/*
-
 Class 4
 """
 Working with file system module
 """
 */
 
-// import * as fs from 'fs/promises';
+import * as fs from 'fs/promises';
+import { copyFileSync } from 'fs';
 
-
-// //Copying example
-// import {copyFileSync, constants} from 'fs';
-
-// copyFileSync('example.txt','example_copy.txt');
-// console.log("example.txt was copied to example_copy.txt");
-
+// copyFile('.','class1','js');
 
 // deleteFolderWithFiles('tutorial');
 
 // createMultipleFiles();
+
+// createFolderWithFile('teste','teste','txt');
+
+
+function copyFile (path,file,extension) {
+    copyFileSync(`${path}/${file}.${extension}`,`${path}/${file}_copy.${extension}`);
+    console.log(`${file}.${extension} was copied to ${file}_copy.${extension}`);
+}
 
 async function createMultipleFiles () {
     try {
@@ -132,7 +120,6 @@ async function createFile(folder,name,extension) {
     }
 }
 
-// createFolderWithFile('teste','teste','txt');
 
 async function createFolderWithFile(folder,file,extension) {
     try {
@@ -156,89 +143,3 @@ async function createFolderWithFile(folder,file,extension) {
 //     console.log("Error on appending data", err);
 // }
 
-/*
-
-Class 3
-"""
-ReadLine Module
-"""
-*/
-/*
-const readline = require('readline');
-const rl = readline.createInterface({input: process.stdin,
-                          output: process.stdout});
-
-let num1 = Math.floor((Math.random()*10) + 1);
-let num2 = Math.floor((Math.random()*10) + 1);
-
-let answer = num1 + num2;
-
-rl.question(`What is ${ num1 } + ${ num2 }? \n`,
-(userInput) =>{
-    inputFunction(userInput,answer);
-});
-
-const inputFunction = function(userInput,answer) {
-    if(userInput.trim() == answer){
-        rl.close();
-    } else{
-        rl.setPrompt('Wrong answer! Try again \n')
-        rl.prompt();
-        rl.on('line',(c) => {
-            inputFunction(c,answer);
-        })
-    }
-}
-
-rl.on('close', () =>{
-    console.log("Correct!!");
-});
- */
-/*
-
-Class 2
-"""
-Event class
-"""
-*/
-/*
-const EventEmitter = require('events');
-const eventEmitter = new EventEmitter();
-
-eventEmitter.on('tutorial',(num1,num2) => {
-    console.log("tutorial event has occurred");
-    console.log(num1+num2);
-})
-
-eventEmitter.emit('tutorial',1,2);
-
-class Person extends EventEmitter{
-    constructor(name){
-        super();
-        this._name = name;
-    }
-
-    get name(){
-        return this._name;
-    }
-}
-
-let pedro = new Person('Pedro');
-let manuela = new Person('Manuela');
-pedro.on('name', ()=>{
-    console.log('my name is' + pedro.name);
-});
-
-manuela.on('name', ()=>{
-    console.log('my name is ' + manuela.name);
-});
-
-pedro.emit("name");
-manuela.emit("name");
- */
-
-/*
-"""
-Primeiro video
-"""
-*/
