@@ -8,6 +8,8 @@ class SomeMathObject{
     }
 }
 
+export {sum, PI , SomeMathObject }
+
 /*
 """
 Aqui exporta um a um
@@ -22,4 +24,4 @@ Aqui exporta um a um
 Aqui exporta todos de uma vez
 """
 */
-module.exports = {sum:sum, PI:PI, SomeMathObject:SomeMathObject}
+// module.exports = {sum:sum, PI:PI, SomeMathObject:SomeMathObject}

@@ -1,12 +1,27 @@
 /*
 
+Class 5
+"""
+Working with Readable and Writable streams
+"""
+*/
+
+const fs = require('fs');
+
+const readStream  = fs.createReadStream('.example_copy.txt');
+readStream.on('data', (chunk) =>{
+    console.log(chunk)
+})
+
+/*
+
 Class 4
 """
 Working with file system module
 """
 */
 
-import * as fs from 'fs/promises';
+// import * as fs from 'fs/promises';
 
 
 // //Copying example
@@ -16,7 +31,7 @@ import * as fs from 'fs/promises';
 // console.log("example.txt was copied to example_copy.txt");
 
 
-deleteFolderWithFiles('tutorial');
+// deleteFolderWithFiles('tutorial');
 
 // createMultipleFiles();
 
@@ -116,34 +131,25 @@ async function createFile(folder,name,extension) {
         console.log("Error on creating", err);
     }
 }
-// // Create a folder with a file
-// try {
-//     await fs.mkdir('tutorial');
-//     console.log("Sucess on creating tutorial folder");
-//     try{
-//         await fs.writeFile('tutorial/a.txt',"this is an example inside a folder 1");
-//         await fs.writeFile('tutorial/b.txt',"this is an example inside a folder 2");
-//         console.log("Sucess on creating example inside tutorial");
-//     } catch(error) {
-//         console.log("Error on creating", err);
-//     }
-// } catch (error) {
-//     console.log('Error on creating a file', error);
-// }
 
-// // Trying to remove a folder with a file insed (gives an error)
-// try {
-//     await fs.unlink('tutorial/example.txt')
-//     console.log("Sucess on deleting tutorial/example.txt");
-//     try {
-//         await fs.rmdir('tutorial');
-//         console.log("Sucess on deleting tutorial folder");
-//     } catch {
-//         console.log("Error on deleting tutorial", error);
-//     }
-// } catch (error) {
-//     console.log("Error on deleting tutorial", error);
-// }
+// createFolderWithFile('teste','teste','txt');
+
+async function createFolderWithFile(folder,file,extension) {
+    try {
+        await fs.mkdir(folder);
+        console.log(`Sucess on creating ${folder} folder`);
+        try{
+            await fs.writeFile(`${folder}/${file}.${extension}`,"this is an example inside a folder 1");
+            console.log(`Sucess on creating ${folder}/${file}.${extension} inside ${folder}`);
+        } catch(error) {
+            console.log("Error on creating the file", error);
+        }
+    } catch (error) {
+        console.log("Error on creating the folder", error);
+    }
+}
+
+
 // try{
 //     await fs.appendFile('example_renamed_asyn.txt',"It was wrong. I wrote writeFile instead of appendFile");
 // } catch(error) {
@@ -235,14 +241,4 @@ manuela.emit("name");
 """
 Primeiro video
 """
-const sum = require("./tutorial");
-
-// console.log("Node is working");
-const tutorial = require('./tutorial')
-// console.log(tutorial(1,1));
-
-console.log(tutorial);
-console.log(tutorial.sum(1,2));
-console.log(tutorial.PI);
-console.log(new tutorial.SomeMathObject());
 */

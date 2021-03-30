@@ -1,19 +1,18 @@
-import { secretAlgorithm } from './processes.js';
-import { createRequire } from 'module';
-const require = createRequire();
-const now = require('performance-now');
+import { secretAlgorithm} from './processes.js';
+let perf_hooks = await import('perf_hooks');
 
-main();
+
 const NUMBER_OF_TESTS = 10;
+main();
 
 async function main() {
   try {
     let totalTime = 0;
     
     for (let i =0; i< NUMBER_OF_TESTS; i++) {
-      const start = now();
+      const start = perf_hooks.performance.now();
       await secretAlgorithm();
-      const end = now();
+      const end = perf_hooks.performance.now();
       totalTime = (end - start);
     }
     
