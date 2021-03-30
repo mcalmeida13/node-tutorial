@@ -8,7 +8,7 @@ class SomeMathObject{
     }
 }
 
-export {sum, PI , SomeMathObject }
+export default {sum, PI , SomeMathObject }
 
 /*
 """

@@ -1,4 +1,4 @@
-import {sum} from './tutorial.js'
+import tutorial from './tutorial.js'
 // const sum = require("./tutorial");
 
 console.log("Node is working");
