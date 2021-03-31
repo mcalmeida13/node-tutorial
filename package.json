@@ -1,7 +1,7 @@
 {
   "name": "tutorial",
   "version": "1.0.0",
-  "description": "",
+  "description": "nodejs tutorial",
   "type": "module",
   "main": "app.js",
   "scripts": {
@@ -11,10 +11,14 @@
     "type": "git",
     "url": "git+https://github.com/mcalmeida13/node-tutorial.git"
   },
-  "author": "",
+  "author": "Manuela Carvalho",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mcalmeida13/node-tutorial/issues"
   },
-  "homepage": "https://github.com/mcalmeida13/node-tutorial#readme"
+  "homepage": "https://github.com/mcalmeida13/node-tutorial#readme",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "nodemon": "^2.0.7"
+  }
 }
